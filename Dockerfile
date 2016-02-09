@@ -10,7 +10,7 @@
 #
 #################################---INFO---#####################################
 
-FROM debian
+FROM scratch
 MAINTAINER DevOps <devops@kendu.si>
 
 ################################################################################
@@ -22,11 +22,6 @@ MAINTAINER DevOps <devops@kendu.si>
 
 ################################---BUILD---#####################################
 
-RUN apt-get update && \
-    apt-get upgrade --yes --force-yes && \
-    apt-get install --yes --force-yes \
-        ca-certificates \
-    && \
-    apt-get clean; \
+ADD http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt /etc/ssl/certs/ca-certificates.crt
 
 ################################################################################
